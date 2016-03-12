@@ -3,7 +3,7 @@ defmodule SnowflakeClient.Mixfile do
 
   def project do
     [app: :snowflake_client,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.1",
      description: "A OAuth 2.0 client for Snowflake.",
      deps: deps,
