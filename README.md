@@ -71,7 +71,7 @@ defmodule MyApp.AuthController do
   end
 
   defp get_user!(token) do
-    {:ok, %{body: user}} = OAuth2.AccessToken.get(token, "/api/v1/me")
+    {:ok, %{body: user}} = OAuth2.Client.get(token, "/api/v1/me")
     user
   end
 end

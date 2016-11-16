@@ -39,7 +39,10 @@ defmodule SnowflakeClient do
   performs a client HTTP request and grabs the access token.
   """
   def get_token!(params \\ [], headers \\ []) do
-    OAuth2.Client.get_token!(client(), params)
+    client()
+    |> put_header("Accept", "application/json")
+    |> put_param(:client_secret, client.client_secret)
+    |> OAuth2.Client.get_token!(params, headers)
   end
 
   # Strategy Callbacks
@@ -48,9 +51,11 @@ defmodule SnowflakeClient do
     AuthCode.authorize_url(client, params)
   end
 
+  # def get_token(client, params \\ [], headers \\ [], opts \\ []) do
   def get_token(client, params, headers) do
     client
     |> put_header("Accept", "application/json")
+    |> put_param(:client_secret, client.client_secret)
     |> AuthCode.get_token(params, headers)
   end
 end
