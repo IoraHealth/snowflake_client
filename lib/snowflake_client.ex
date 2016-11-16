@@ -31,7 +31,7 @@ defmodule SnowflakeClient do
   """
   def authorize_url!(params \\ []) do
     client()
-    |> put_param(:scope, "person")
+    |> put_param(:scope, "user")
     |> OAuth2.Client.authorize_url!(params)
   end
 
